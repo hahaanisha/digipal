@@ -1,3 +1,7 @@
+import 'package:digipal/screens/BotPage.dart';
+import 'package:digipal/screens/LinkPage.dart';
+import 'package:digipal/screens/ReachOutPage.dart';
+import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,6 +33,10 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       // // const ProfileScreen(),
       // CandidatesListPage(jobUID: '-OHJ2Hf-h5MXugJqBQtV',),
       // SignUpPageI(),
+      Practicepage(),
+      LinkPage(),
+      BotPage(),
+      ReachOutPage(),
     ];
 
     return Scaffold(
@@ -36,11 +44,10 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings_applications), label: 'Applications'),
-          BottomNavigationBarItem(icon: Icon(Icons.all_inbox_outlined), label: 'All Jobs'),
-          BottomNavigationBarItem(icon: Icon(Icons.wb_incandescent_rounded), label: 'Selected Application'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Add Recruiter'),
+          BottomNavigationBarItem(icon: Icon(Icons.add_chart_outlined), label: 'Practice'),
+          BottomNavigationBarItem(icon: Icon(Icons.link_rounded), label: 'Link'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: 'Talk2Bot'),
+          BottomNavigationBarItem(icon: Icon(Icons.message_outlined), label: 'Reach Out'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
