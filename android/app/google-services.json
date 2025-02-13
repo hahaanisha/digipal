@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "289612693571",
+    "project_id": "digipal-97c66",
+    "storage_bucket": "digipal-97c66.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289612693571:android:2024d4e6d12d107ef414f6",
+        "android_client_info": {
+          "package_name": "com.example.digipal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7bC41NjJbOxGD4O8l0XITDOMxPEuSef8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
