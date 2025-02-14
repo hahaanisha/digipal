@@ -1,6 +1,6 @@
 import 'package:digipal/screens/BotPage.dart';
 import 'package:digipal/screens/LinkPage.dart';
-import 'package:digipal/screens/ReachOutPage.dart';
+import 'package:digipal/screens/feedback.dart';
 import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       Practicepage(),
       LinkPage(),
       BotPage(),
-      ReachOutPage(),
+      FeedbackScreen(),
     ];
 
     return Scaffold(
