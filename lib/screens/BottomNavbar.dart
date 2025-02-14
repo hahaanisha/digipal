@@ -34,7 +34,7 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       // CandidatesListPage(jobUID: '-OHJ2Hf-h5MXugJqBQtV',),
       // SignUpPageI(),
       Practicepage(),
-      LinkPage(),
+      FormHomePage(),
       BotPage(),
       FeedbackScreen(),
     ];
