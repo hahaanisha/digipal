@@ -89,53 +89,55 @@ class HardLevelPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Welcome to the Hard Level 🔥",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              "Master Advanced Digital Skills",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black54),
-            ),
-            const SizedBox(height: 20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Welcome to the Hard Level 🔥",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                "Master Advanced Digital Skills",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              const SizedBox(height: 20),
 
-            _buildModuleCard(
-              title: "Module 1: Cybersecurity",
-              description:
-              "Understand digital threats, secure your accounts, and protect personal information.",
-              imagePath: "assets/cybersecurity.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/cyberSecurity');
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 2: Cloud Storage",
-              description:
-              "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
-              imagePath: "assets/cloud.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/cloudStorage');
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 3: Troubleshooting",
-              description:
-              "Solve common technical issues, fix software errors, and troubleshoot device problems.",
-              imagePath: "assets/troubleshooting.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/troubleshooting');
-              },
-            ),
-          ],
+              _buildModuleCard(
+                title: "Module 1: Cybersecurity",
+                description:
+                "Understand digital threats, secure your accounts, and protect personal information.",
+                imagePath: "assets/cybersecurity.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/cyberSecurity');
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 2: Cloud Storage",
+                description:
+                "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
+                imagePath: "assets/cloud.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/cloudStorage');
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 3: Troubleshooting",
+                description:
+                "Solve common technical issues, fix software errors, and troubleshoot device problems.",
+                imagePath: "assets/troubleshooting.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/troubleshooting');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

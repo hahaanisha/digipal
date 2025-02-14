@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../auth/profilePage.dart';
 import 'Easy/EasyHome.dart';
 import 'Hard/HardHome.dart';
 import 'Medium/mediumHome.dart';
@@ -92,7 +93,16 @@ class ChallengePage extends StatelessWidget {
         title: const Text("DigiPal", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: Colors.purple,
-        leading: const Icon(Icons.account_circle, color: Colors.white),
+        leading: InkWell(
+          onTap: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfilePage(),
+              ),
+            );
+          },
+            child: const Icon(Icons.account_circle, color: Colors.white)),
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline, color: Colors.white),
@@ -100,82 +110,84 @@ class ChallengePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Center(
-              child: Column(
-                children: [
-                  Text(
-                    "Choose Your Challenge 🎯",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    "From basics to pro—practice, progress, and power up!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Center(
+                child: Column(
+                  children: [
+                    Text(
+                      "Choose Your Challenge 🎯",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "From basics to pro—practice, progress, and power up!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            _buildChallengeCard(
-              color: Colors.green.shade100,
-              level: "EASY",
-              title: "Getting Started🌱",
-              subtitle: "Learn the basics, step by step.",
-              emoji: "🟢",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const EasyLevelPage()),
-                );
-              },
-            ),
-            _buildChallengeCard(
-              color: Colors.amber.shade100,
-              level: "MEDIUM",
-              title: "Level Up🚀",
-              subtitle: "Build confidence with everyday tasks.",
-              emoji: "🟡",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MediumLevelPage()),
-                );
-              },
-            ),
-            _buildChallengeCard(
-              color: Colors.red.shade100,
-              level: "HARD",
-              title: "Challenge Mode🔥",
-              subtitle: "Master advanced digital skills.",
-              emoji: "🔴",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HardLevelPage()),
-                );
-              },
-            ),
-            _buildChallengeCard(
-              color: Colors.grey.shade200,
-              level: "TEST",
-              title: "Test Yourself🏆",
-              subtitle: "See how much you've learned!",
-              emoji: "📝",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const EasyLevelPage()),
-                );
-              },
-            ),
-          ],
+              const SizedBox(height: 20),
+              _buildChallengeCard(
+                color: Colors.green.shade100,
+                level: "EASY",
+                title: "Getting Started🌱",
+                subtitle: "Learn the basics, step by step.",
+                emoji: "🟢",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const EasyLevelPage()),
+                  );
+                },
+              ),
+              _buildChallengeCard(
+                color: Colors.amber.shade100,
+                level: "MEDIUM",
+                title: "Level Up🚀",
+                subtitle: "Build confidence with everyday tasks.",
+                emoji: "🟡",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MediumLevelPage()),
+                  );
+                },
+              ),
+              _buildChallengeCard(
+                color: Colors.red.shade100,
+                level: "HARD",
+                title: "Challenge Mode🔥",
+                subtitle: "Master advanced digital skills.",
+                emoji: "🔴",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HardLevelPage()),
+                  );
+                },
+              ),
+              _buildChallengeCard(
+                color: Colors.grey.shade200,
+                level: "TEST",
+                title: "Test Yourself🏆",
+                subtitle: "See how much you've learned!",
+                emoji: "📝",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const EasyLevelPage()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

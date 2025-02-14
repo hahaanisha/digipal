@@ -5,6 +5,7 @@ import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
 import 'Practice.dart';
+import 'ReachOutPage.dart';
 
 
 
@@ -38,8 +39,8 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       // SignUpPageI(),
 
       ChallengePage(),
-      FormHomePage(),
-      FormHomePage(),
+      FormHomePage(UID: widget.companyUID,),
+      ReachOutPage(),
       FeedbackScreen(),
     ];
 

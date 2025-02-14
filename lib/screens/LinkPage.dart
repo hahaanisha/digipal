@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:firebase_database/firebase_database.dart';
 
 class FormHomePage extends StatefulWidget {
+  final dynamic UID;
+
+  const FormHomePage({super.key, required this.UID});
+
   @override
   _FormHomePageState createState() => _FormHomePageState();
 }
@@ -14,27 +19,40 @@ class _FormHomePageState extends State<FormHomePage> {
   int currentStep = 0;
   Map<String, String> userInputs = {};
   static const apiKey = 'AIzaSyA7LxDBz3bEPP1JkFjfbzdry5UIpu81H-A';
+  String userLanguage = "English";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserLanguage();
+  }
+
+  Future<void> fetchUserLanguage() async {
+    DatabaseReference userRef = FirebaseDatabase.instance.ref().child('users').child(widget.UID);
+    DatabaseEvent event = await userRef.once();
+    if (event.snapshot.exists) {
+      setState(() {
+        userLanguage = event.snapshot.child('language').value.toString();
+      });
+    }
+  }
 
   Future<void> getGeminiResponse(String apiResponse) async {
     Gemini.init(apiKey: apiKey, enableDebugging: true);
 
     final geminiResponse = await Gemini.instance.prompt(parts: [
       Part.text(
-          "Below is my web scraping API response:${apiResponse} Now add an additional field named 'description' in the above JSON format, which will explain instructions about how to fill that text field in Hindi and give me a full final JSON as output."
+          "Below is my web scraping API response:${apiResponse} Now add an additional field named 'description' in the above JSON format, which will explain instructions about how to fill that text field in ${userLanguage} and give me a full final JSON as output."
       ),
     ]);
 
     if (geminiResponse?.output != null) {
       try {
-        // Clean up the response string by removing unnecessary markdown or code block formatting
         String cleanedResponse = geminiResponse!.output!.replaceAll(RegExp(r'```json\n|\n```'), '');
-
-        // Now decode the cleaned response
         List<dynamic> enhancedFields = jsonDecode(cleanedResponse);
 
         setState(() {
           formFields = List<Map<String, dynamic>>.from(enhancedFields.map((field) {
-            // Add a fallback description if it's not available
             if (field['description'] == null || field['description'].isEmpty) {
               field['description'] = 'Please fill in the required information for this field.';
             }
@@ -108,11 +126,6 @@ class _FormHomePageState extends State<FormHomePage> {
                     style: TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  // SizedBox(height: 10),
-                  // Text(
-                  //   "Only Enter your ${formFields[currentStep]['name']}",
-                  //   style: TextStyle(fontWeight: FontWeight.bold),
-                  // ),
                   SizedBox(height: 5),
                   Text(
                     formFields[currentStep]['description'] ?? "No description available",

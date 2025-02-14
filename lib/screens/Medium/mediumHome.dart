@@ -89,53 +89,55 @@ class MediumLevelPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Welcome to the Medium Level 🚀",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              "Gain Confidence with Everyday Digital Skills",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black54),
-            ),
-            const SizedBox(height: 20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Welcome to the Medium Level 🚀",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                "Gain Confidence with Everyday Digital Skills",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              const SizedBox(height: 20),
 
-            _buildModuleCard(
-              title: "Module 1: Safe Browsing",
-              description:
-              "Learn how to navigate the internet safely, avoid scams, and protect your privacy online.",
-              imagePath: "assets/browsing.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/safeBrowsing');
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 2: Online Banking",
-              description:
-              "Understand digital payments, secure transactions, and how to manage your money online.",
-              imagePath: "assets/banking.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/onlineBanking');
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 3: Emails & Communication",
-              description:
-              "Master emails, organize your inbox, and learn to communicate professionally online.",
-              imagePath: "assets/email.png",
-              onTap: () {
-                Navigator.pushNamed(context, '/emailCommunication');
-              },
-            ),
-          ],
+              _buildModuleCard(
+                title: "Module 1: Safe Browsing",
+                description:
+                "Learn how to navigate the internet safely, avoid scams, and protect your privacy online.",
+                imagePath: "assets/browsing.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/safeBrowsing');
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 2: Online Banking",
+                description:
+                "Understand digital payments, secure transactions, and how to manage your money online.",
+                imagePath: "assets/banking.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/onlineBanking');
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 3: Emails & Communication",
+                description:
+                "Master emails, organize your inbox, and learn to communicate professionally online.",
+                imagePath: "assets/email.png",
+                onTap: () {
+                  Navigator.pushNamed(context, '/emailCommunication');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -92,62 +92,64 @@ class EasyLevelPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centered content
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Welcome to the Easy Level 🎉",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              "Let's Get You Started with the Basics",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black54),
-            ),
-            const SizedBox(height: 20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // Centered content
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Welcome to the Easy Level 🎉",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                "Let's Get You Started with the Basics",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              const SizedBox(height: 20),
 
-            _buildModuleCard(
-              title: "Module 1: Basic Typing",
-              description:
-              "Learn to type with ease! Master the keyboard, improve speed, and gain confidence.",
-              imagePath: "assets/easyTyping.png",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TypingPage()),
-                );
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 2: Smartphone",
-              description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/smartPhone.png",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
-                );
-              },
-            ),
-            _buildModuleCard(
-              title: "Module 3: Calls & Messages",
-              description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/call.png",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
-                );
-              },
-            ),
-          ],
+              _buildModuleCard(
+                title: "Module 1: Basic Typing",
+                description:
+                "Learn to type with ease! Master the keyboard, improve speed, and gain confidence.",
+                imagePath: "assets/easyTyping.png",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TypingPage()),
+                  );
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 2: Smartphone",
+                description:
+                "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
+                imagePath: "assets/smartPhone.png",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CallsMessagesPage()),
+                  );
+                },
+              ),
+              _buildModuleCard(
+                title: "Module 3: Calls & Messages",
+                description:
+                "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
+                imagePath: "assets/call.png",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CallsMessagesPage()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
 
