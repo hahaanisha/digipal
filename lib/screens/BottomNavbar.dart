@@ -35,9 +35,10 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       // // const ProfileScreen(),
       // CandidatesListPage(jobUID: '-OHJ2Hf-h5MXugJqBQtV',),
       // SignUpPageI(),
-      TypingBasicsScreen(),
-      LinkPage(),
-      BotPage(),
+
+      Practicepage(),
+      FormHomePage(),
+
       FeedbackScreen(),
     ];
 
