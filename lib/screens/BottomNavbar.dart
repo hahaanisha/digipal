@@ -4,6 +4,8 @@ import 'package:digipal/screens/feedback.dart';
 import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
+import 'Practice.dart';
+
 
 
 class BottomNavBarR extends StatefulWidget {
@@ -37,7 +39,7 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
 
       ChallengePage(),
       FormHomePage(),
-
+      FormHomePage(),
       FeedbackScreen(),
     ];
 

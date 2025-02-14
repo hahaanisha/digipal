@@ -40,6 +40,12 @@ dependencies:
   firebase_database: ^11.3.1
   firebase_storage: ^12.4.2
   file_picker: ^8.3.2
+  flutter_gemini: ^3.0.0
+  url_launcher: ^6.3.1
+  youtube_player_flutter: ^8.1.0
+  webview_flutter: ^4.4.2
+  webview_flutter_android: ^3.10.0
+
 
 
 dev_dependencies:

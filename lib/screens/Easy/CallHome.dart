@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'CallHome.dart';
-import 'Typing.dart';
+import 'call.dart';
 
-class EasyLevelPage extends StatelessWidget {
-  const EasyLevelPage({Key? key}) : super(key: key);
+class CallsMessagesPage extends StatelessWidget {
+  const CallsMessagesPage({Key? key}) : super(key: key);
 
   void _showHelpDialog(BuildContext context) {
     showDialog(
@@ -28,7 +28,6 @@ class EasyLevelPage extends StatelessWidget {
   Widget _buildModuleCard({
     required String title,
     required String description,
-    required String imagePath,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
@@ -43,16 +42,6 @@ class EasyLevelPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                imagePath,
-                width: 80,  // Increased size
-                height: 80, // Increased size
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 12),
             Text(
               title,
               textAlign: TextAlign.center,
@@ -95,39 +84,37 @@ class EasyLevelPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centered content
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Welcome to the Easy Level 🎉",
+              "Module 3: Calls & Messages 🎉",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 6),
             const Text(
-              "Let's Get You Started with the Basics",
+              "Let's learn how to contact others",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.black54),
             ),
             const SizedBox(height: 20),
 
             _buildModuleCard(
-              title: "Module 1: Basic Typing",
+              title: "How to Make a Call?",
               description:
-              "Learn to type with ease! Master the keyboard, improve speed, and gain confidence.",
-              imagePath: "assets/easyTyping.png",
+              "Make calls with confidence! Dial effortlessly, manage contacts, and stay connected.",
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TypingPage()),
+                  MaterialPageRoute(builder: (context) => CallTutorialPage()),
                 );
               },
             ),
             _buildModuleCard(
-              title: "Module 2: Smartphone",
+              title: "How to Save a Contact",
               description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/smartPhone.png",
+              "Save contacts with ease! Organize, edit, and keep your connections at your fingertips.",
               onTap: () {
                 Navigator.push(
                   context,
@@ -136,10 +123,9 @@ class EasyLevelPage extends StatelessWidget {
               },
             ),
             _buildModuleCard(
-              title: "Module 3: Calls & Messages",
+              title: "How to Send Messages",
               description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/call.png",
+              "Send messages effortlessly! Stay connected with quick, clear, and confident texting.",
               onTap: () {
                 Navigator.push(
                   context,
@@ -150,7 +136,6 @@ class EasyLevelPage extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 }

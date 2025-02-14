@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'CallHome.dart';
-import 'Typing.dart';
-
-class EasyLevelPage extends StatelessWidget {
-  const EasyLevelPage({Key? key}) : super(key: key);
+class HardLevelPage extends StatelessWidget {
+  const HardLevelPage({Key? key}) : super(key: key);
 
   void _showHelpDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("About Easy Level"),
+        title: const Text("About Hard Level"),
         content: const Text(
-          "The Easy Level introduces you to digital basics. "
-              "Learn how to type, navigate a smartphone, and communicate through calls and messages.",
+          "The Hard Level helps you master advanced digital skills. "
+              "Learn about cybersecurity, cloud storage, and troubleshooting technical issues.",
         ),
         actions: [
           TextButton(
@@ -37,7 +34,7 @@ class EasyLevelPage extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.purple.shade100,
+          color: Colors.red.shade100,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -47,8 +44,8 @@ class EasyLevelPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
                 imagePath,
-                width: 80,  // Increased size
-                height: 80, // Increased size
+                width: 80,
+                height: 80,
                 fit: BoxFit.cover,
               ),
             ),
@@ -95,62 +92,52 @@ class EasyLevelPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centered content
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Welcome to the Easy Level 🎉",
+              "Welcome to the Hard Level 🔥",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 6),
             const Text(
-              "Let's Get You Started with the Basics",
+              "Master Advanced Digital Skills",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.black54),
             ),
             const SizedBox(height: 20),
 
             _buildModuleCard(
-              title: "Module 1: Basic Typing",
+              title: "Module 1: Cybersecurity",
               description:
-              "Learn to type with ease! Master the keyboard, improve speed, and gain confidence.",
-              imagePath: "assets/easyTyping.png",
+              "Understand digital threats, secure your accounts, and protect personal information.",
+              imagePath: "assets/cybersecurity.png",
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TypingPage()),
-                );
+                Navigator.pushNamed(context, '/cyberSecurity');
               },
             ),
             _buildModuleCard(
-              title: "Module 2: Smartphone",
+              title: "Module 2: Cloud Storage",
               description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/smartPhone.png",
+              "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
+              imagePath: "assets/cloud.png",
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
-                );
+                Navigator.pushNamed(context, '/cloudStorage');
               },
             ),
             _buildModuleCard(
-              title: "Module 3: Calls & Messages",
+              title: "Module 3: Troubleshooting",
               description:
-              "Get familiar with your smartphone—understand icons, navigate menus, and adjust settings.",
-              imagePath: "assets/call.png",
+              "Solve common technical issues, fix software errors, and troubleshoot device problems.",
+              imagePath: "assets/troubleshooting.png",
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
-                );
+                Navigator.pushNamed(context, '/troubleshooting');
               },
             ),
           ],
         ),
       ),
-
     );
   }
 }
