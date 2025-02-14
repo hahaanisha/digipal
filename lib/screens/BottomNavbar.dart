@@ -4,7 +4,6 @@ import 'package:digipal/screens/feedback.dart';
 import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
-import 'Practice.dart';
 
 
 class BottomNavBarR extends StatefulWidget {
@@ -47,7 +46,7 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.add_chart_outlined), label: 'Practice'),
+          BottomNavigationBarItem(icon: Icon(Icons.add_chart_outlined), label: 'Challange Page'),
           BottomNavigationBarItem(icon: Icon(Icons.link_rounded), label: 'Link'),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: 'Talk2Bot'),
           BottomNavigationBarItem(icon: Icon(Icons.message_outlined), label: 'Reach Out'),
