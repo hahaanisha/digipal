@@ -4,6 +4,8 @@ import 'package:digipal/screens/feedback.dart';
 import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
+import 'Practice.dart';
+
 
 class BottomNavBarR extends StatefulWidget {
   final dynamic companyUID;
@@ -33,9 +35,10 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       // // const ProfileScreen(),
       // CandidatesListPage(jobUID: '-OHJ2Hf-h5MXugJqBQtV',),
       // SignUpPageI(),
+
       Practicepage(),
       FormHomePage(),
-      BotPage(),
+
       FeedbackScreen(),
     ];
 
