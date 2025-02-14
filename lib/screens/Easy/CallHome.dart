@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'CallHome.dart';
 import 'call.dart';
+import 'saveContact.dart';
+import 'sendMessage.dart';
 
 class CallsMessagesPage extends StatelessWidget {
   const CallsMessagesPage({Key? key}) : super(key: key);
@@ -118,7 +120,7 @@ class CallsMessagesPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
+                  MaterialPageRoute(builder: (context) => SaveContactPage()),
                 );
               },
             ),
@@ -129,7 +131,7 @@ class CallsMessagesPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CallsMessagesPage()),
+                  MaterialPageRoute(builder: (context) => WhatsAppSenderPage()),
                 );
               },
             ),

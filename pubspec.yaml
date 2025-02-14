@@ -76,6 +76,11 @@ flutter:
     - assets/call.png
     - assets/easyTyping.png
     - assets/smartPhone.png
+    - assets/SCstep1.png
+    - assets/SCstep2.png
+    - assets/SCstep3.png
+    - assets/SCstep4.png
+    - assets/SCstep5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
