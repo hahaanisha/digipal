@@ -3,6 +3,7 @@ import '../auth/profilePage.dart';
 import 'Easy/EasyHome.dart';
 import 'Hard/HardHome.dart';
 import 'Medium/mediumHome.dart';
+import 'Test/testHomePage.dart';
 
 class ChallengePage extends StatelessWidget {
   const ChallengePage({super.key});
@@ -182,7 +183,7 @@ class ChallengePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EasyLevelPage()),
+                    MaterialPageRoute(builder: (context) =>  Testhomepage()),
                   );
                 },
               ),

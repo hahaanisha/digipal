@@ -17,11 +17,15 @@ class _ProfilePageState extends State<ProfilePage> {
   String phone = '';
   String selectedLanguage = 'English';
 
+  int easyScore = 0;
+  int mediumScore = 0;
+  int hardScore = 0;
+  int finalScore = 0;
+
   bool isEditing = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  // List of all Indian languages for dropdown
   final List<String> indianLanguages = [
     'English', 'Hindi', 'Marathi', 'Gujarati', 'Tamil', 'Telugu', 'Kannada',
     'Malayalam', 'Bengali', 'Punjabi', 'Urdu', 'Odia', 'Assamese', 'Sanskrit'
@@ -38,6 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (user != null) {
       uid = user.uid;
       DatabaseReference userRef = _database.child(uid);
+      DatabaseReference progressRef = FirebaseDatabase.instance.ref().child('progress/$uid');
 
       userRef.once().then((DatabaseEvent event) {
         if (event.snapshot.exists) {
@@ -50,6 +55,18 @@ class _ProfilePageState extends State<ProfilePage> {
 
             nameController.text = name;
             phoneController.text = phone;
+          });
+        }
+      });
+
+      progressRef.once().then((DatabaseEvent event) {
+        if (event.snapshot.exists) {
+          Map<dynamic, dynamic>? progressData = event.snapshot.value as Map?;
+          setState(() {
+            easyScore = progressData?['easy_score'] ?? 0;
+            mediumScore = progressData?['medium_score'] ?? 0;
+            hardScore = progressData?['hard_score'] ?? 0;
+            finalScore = progressData?['final_score'] ?? 0;
           });
         }
       });
@@ -116,6 +133,18 @@ class _ProfilePageState extends State<ProfilePage> {
               }).toList(),
             )
                 : Text(selectedLanguage),
+            SizedBox(height: 20),
+            Text('Badges:', style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Wrap(
+              spacing: 10,
+              children: [
+                if (easyScore > 7) Image.asset('assets/easybadge.png', width: 50, height: 50),
+                if (mediumScore > 7) Image.asset('assets/mediumbadge.png', width: 50, height: 50),
+                if (hardScore > 7) Image.asset('assets/hardbadge.png', width: 50, height: 50),
+                if (finalScore > 7) Image.asset('assets/black.png', width: 50, height: 50),
+              ],
+            ),
             SizedBox(height: 20),
             isEditing
                 ? Row(

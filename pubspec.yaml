@@ -102,6 +102,9 @@ flutter:
     - assets/safeBrowsing.png
     - assets/form.png
     - assets/payment.png
+    - assets/easybadge.png
+    - assets/mediumbadge.png
+    - assets/hardbadge.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
