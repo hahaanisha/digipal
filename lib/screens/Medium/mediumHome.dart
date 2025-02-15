@@ -121,7 +121,7 @@ class MediumLevelPage extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SafeBrowsingPage(),
+                      builder: (context) => SafeBrowsingGuide(),
                     ),
                   );
                 },

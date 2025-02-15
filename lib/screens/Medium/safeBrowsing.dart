@@ -1,138 +1,212 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import url_launcher
 
-void main() {
-  runApp(const SafeBrowsingPage());
-}
-
-class SafeBrowsingPage extends StatelessWidget {
-  const SafeBrowsingPage({super.key});
-
+class SafeBrowsingGuide extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Internet Jungle',
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const JungleStoryPage(),
-    );
-  }
+  _SafeBrowsingGuideState createState() => _SafeBrowsingGuideState();
 }
 
-class JungleStoryPage extends StatefulWidget {
-  const JungleStoryPage({super.key});
-
-  @override
-  State<JungleStoryPage> createState() => _JungleStoryPageState();
-}
-
-class _JungleStoryPageState extends State<JungleStoryPage> {
-  int shieldPoints = 3; // Represents safe browsing knowledge
-  int storyIndex = 0;
-
-  final List<Map<String, dynamic>> storySteps = [
+class _SafeBrowsingGuideState extends State<SafeBrowsingGuide> {
+  final List<Map<String, dynamic>> _safetyTips = [
     {
-      'text': "You enter the Internet Jungle 🌴. A bright pop-up appears saying 'Win a Free iPhone!'. What do you do?",
-      'choices': [
-        {'text': 'Click on it 🚨', 'correct': false},
-        {'text': 'Ignore and move on ✅', 'correct': true},
+      'title': 'Strong Passwords',
+      'description': 'Use a mix of letters, numbers, and symbols. Never share your password.',
+      'icon': Icons.lock,
+      'examples': [
+        'Good: Mix@2024User',
+        'Bad: password123'
       ]
     },
     {
-      'text': "You find a signpost offering a 'Bank Login Bonus'. The website link looks suspicious. What's your move?",
-      'choices': [
-        {'text': 'Enter login details 🔑', 'correct': false},
-        {'text': 'Verify URL before proceeding 🛡️', 'correct': true},
+      'title': 'Suspicious Links',
+      'description': 'Don\'t click on links from unknown sources or suspicious messages.',
+      'icon': Icons.link_off,
+      'examples': [
+        'Avoid: "Click here to win money!"',
+        'Avoid: "Your account is blocked, click here"'
       ]
     },
     {
-      'text': "A jungle villager asks for your password to 'help' you. What do you do?",
-      'choices': [
-        {'text': 'Share it openly 🗣️', 'correct': false},
-        {'text': 'Keep it secret & use strong passwords 🔐', 'correct': true},
+      'title': 'Personal Information',
+      'description': 'Never share personal details like bank info or OTP with anyone.',
+      'icon': Icons.security,
+      'examples': [
+        'Never share: OTP, CVV, PIN',
+        'Never share: Bank account details'
+      ]
+    },
+    {
+      'title': 'Safe Websites',
+      'description': 'Look for the lock symbol (🔒) before entering any information.',
+      'icon': Icons.verified_user,
+      'examples': [
+        'Safe: https:// with lock symbol',
+        'Unsafe: No lock symbol'
       ]
     },
   ];
 
-  void _chooseOption(bool isCorrect) {
-    setState(() {
-      if (isCorrect) {
-        shieldPoints++;
-      } else {
-        shieldPoints--;
-      }
-
-      if (storyIndex < storySteps.length - 1) {
-        storyIndex++;
-      } else {
-        _showGameOverDialog();
-      }
-    });
-  }
-
-  void _showGameOverDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Game Over!"),
-        content: Text(shieldPoints > 2
-            ? "🎉 Congrats! You've mastered safe browsing!"
-            : "⚠️ Be careful online! Always double-check links and never share passwords."),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              setState(() {
-                shieldPoints = 3;
-                storyIndex = 0;
-              });
-            },
-            child: const Text("Restart"),
-          ),
-        ],
-      ),
-    );
+  /// **Fix: Add `_launchURL` inside `_SafeBrowsingGuideState`**
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('❌ Could not open $url')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Internet Jungle"),
-        backgroundColor: Colors.green,
+        title: const Text(
+          "DigiPal",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        backgroundColor: Colors.purple,
         centerTitle: true,
+        leading: const Icon(Icons.account_circle, color: Colors.white),
+
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          Card(
+            color: Colors.purple[50],
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '🛡️ Basic Safety Rules',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.purple[900],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Follow these simple rules to stay safe while using the internet',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.blue[800],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 16),
+          ...buildSafetyTipCards(),
+          SizedBox(height: 16),
+          buildEmergencyCard(),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> buildSafetyTipCards() {
+    return _safetyTips.map((tip) {
+      return Padding(
+        padding: EdgeInsets.only(bottom: 16),
+        child: Card(
+          elevation: 2,
+          child: ExpansionTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.purple,
+              child: Icon(tip['icon'], color: Colors.white),
+            ),
+            title: Text(
+              tip['title'],
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            subtitle: Text(
+              tip['description'],
+              style: TextStyle(fontSize: 14),
+            ),
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Examples:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ...tip['examples'].map<Widget>((example) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 4),
+                        child: Row(
+                          children: [
+                            Icon(
+                              example.startsWith('Good') || example.startsWith('Safe')
+                                  ? Icons.check_circle
+                                  : Icons.cancel,
+                              color: example.startsWith('Good') || example.startsWith('Safe')
+                                  ? Colors.green
+                                  : Colors.red,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: Text(example),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  Widget buildEmergencyCard() {
+    return Card(
+      color: Colors.red[50],
+      child: Padding(
+        padding: EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              storySteps[storyIndex]['text'],
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+              '🚨 If Something Goes Wrong',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
             ),
-            const SizedBox(height: 20),
-            ...List.generate(storySteps[storyIndex]['choices'].length, (index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: storySteps[storyIndex]['choices'][index]['correct']
-                        ? Colors.green
-                        : Colors.red,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                  ),
-                  onPressed: () => _chooseOption(storySteps[storyIndex]['choices'][index]['correct']),
-                  child: Text(
-                    storySteps[storyIndex]['choices'][index]['text'],
-                    style: const TextStyle(fontSize: 16, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              );
-            }),
-            const SizedBox(height: 20),
-            Text("🛡️ Shield Points: $shieldPoints", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            SizedBox(height: 12),
+            ListTile(
+              leading: Icon(Icons.phone, color: Colors.red),
+              title: Text('Call Cyber Crime Helpline'),
+              subtitle: Text('1930'),
+              onTap: () {
+                // Implement phone call functionality
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.report, color: Colors.red),
+              title: Text('Report on Cyber Crime Portal'),
+              subtitle: Text('cybercrime.gov.in'),
+              onTap: () => _launchURL('https://cybercrime.gov.in'), // ✅ Now it works!
+            ),
           ],
         ),
       ),

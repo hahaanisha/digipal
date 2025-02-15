@@ -117,9 +117,14 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("DigiPal - UPI Payments"),
+        title: const Text(
+          "DigiPal",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
         backgroundColor: Colors.purple,
         centerTitle: true,
+        leading: const Icon(Icons.account_circle, color: Colors.white),
+
       ),
       body: SingleChildScrollView(
         child: Padding(
