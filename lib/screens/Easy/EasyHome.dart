@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'CallHome.dart';
 import 'Typing.dart';
+import 'smartphoneHome.dart';
 
 class EasyLevelPage extends StatelessWidget {
   const EasyLevelPage({Key? key}) : super(key: key);
@@ -132,7 +133,7 @@ class EasyLevelPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CallsMessagesPage()),
+                    MaterialPageRoute(builder: (context) => smartphoneHome()),
                   );
                 },
               ),

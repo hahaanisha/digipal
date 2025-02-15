@@ -86,6 +86,11 @@ flutter:
     - assets/SCstep3.png
     - assets/SCstep4.png
     - assets/SCstep5.png
+    - assets/Wifistep1.png
+    - assets/Wifistep2.png
+    - assets/Wifistep3.png
+    - assets/Wifistep4.png
+    - assets/Wifistep5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
