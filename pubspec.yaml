@@ -97,6 +97,10 @@ flutter:
     - assets/Wifistep4.png
     - assets/Wifistep5.png
     - assets/VESHACKIT.gif
+    - assets/email.png
+    - assets/safeBrowsing.png
+    - assets/form.png
+    - assets/payment.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

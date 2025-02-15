@@ -115,7 +115,7 @@ class HardLevelPage extends StatelessWidget {
                 title: "Module 1: Forms",
                 description:
                 "Understand digital threats, secure your accounts, and protect personal information.",
-                imagePath: "assets/cybersecurity.png",
+                imagePath: "assets/form.png",
                 onTap: () {
                   // Navigator.push(
                   //   context,
@@ -129,7 +129,7 @@ class HardLevelPage extends StatelessWidget {
                 title: "Module 2: Basic Payments",
                 description:
                 "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
-                imagePath: "assets/cloud.png",
+                imagePath: "assets/payment.png",
                 onTap: () {
                   Navigator.push(
                     context,
@@ -139,15 +139,7 @@ class HardLevelPage extends StatelessWidget {
                   );
                 },
               ),
-              _buildModuleCard(
-                title: "Module 3: Troubleshooting",
-                description:
-                "Solve common technical issues, fix software errors, and troubleshoot device problems.",
-                imagePath: "assets/troubleshooting.png",
-                onTap: () {
-                  Navigator.pushNamed(context, '/troubleshooting');
-                },
-              ),
+
             ],
           ),
         ),

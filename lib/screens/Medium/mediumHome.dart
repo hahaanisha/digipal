@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'EmailPage.dart';
+import 'safeBrowsing.dart';
 
 class MediumLevelPage extends StatelessWidget {
   const MediumLevelPage({Key? key}) : super(key: key);
@@ -115,16 +116,22 @@ class MediumLevelPage extends StatelessWidget {
                 title: "Module 1: Safe Browsing",
                 description:
                 "Learn how to navigate the internet safely, avoid scams, and protect your privacy online.",
-                imagePath: "assets/browsing.png",
+                imagePath: "assets/safeBrowsing.png",
                 onTap: () {
-                  Navigator.pushNamed(context, '/safeBrowsing');
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SafeBrowsingPage(),
+                    ),
+                  );
                 },
+
               ),
               _buildModuleCard(
                 title: "Module 2: Emails and Communication",
                 description:
                 "Understand digital payments, secure transactions, and how to manage your money online.",
-                imagePath: "assets/banking.png",
+                imagePath: "assets/email.png",
                 onTap: () {
                   Navigator.pushReplacement(
                   context,
