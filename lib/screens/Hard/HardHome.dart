@@ -131,12 +131,12 @@ class HardLevelPage extends StatelessWidget {
                 "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
                 imagePath: "assets/cloud.png",
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TransactionPage(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => TransactionPage(),
+                  //   ),
+                  // );
                 },
               ),
               _buildModuleCard(

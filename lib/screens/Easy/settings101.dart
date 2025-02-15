@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../Hard/HardHome.dart';
 import '../Medium/mediumHome.dart';
 import 'EasyHome.dart';
+import 'securesetting.dart';
 import 'wifi.dart';
 
 
@@ -146,7 +147,7 @@ class setting101 extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => wifi()),
+                    MaterialPageRoute(builder: (context) => Wifi()),
                   );
                 },
               ),
@@ -159,23 +160,10 @@ class setting101 extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const EasyLevelPage()),
+              MaterialPageRoute(builder: (context) => SafetyGuidePage()),
             );
           },
         ),
-              _buildChallengeCard(
-                color: Colors.purple.shade100,
-                level: "APP INSTALL",
-                title: "How do I navigate the app store?",
-                subtitle: "Click here to know more",
-                emoji: "📲",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const EasyLevelPage()),
-                  );
-                },
-              ),
 
             ],
           ),

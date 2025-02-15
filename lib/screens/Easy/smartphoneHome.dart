@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'CallHome.dart';
 import 'call.dart';
+import 'installApp.dart';
 import 'saveContact.dart';
 import 'sendMessage.dart';
 
@@ -91,7 +92,7 @@ class smartphoneHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Module 3: Smart Phone Basics 📱",
+              "Module 2: Smart Phone Basics 📱",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
@@ -132,7 +133,7 @@ class smartphoneHome extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WhatsAppSenderPage()),
+                  MaterialPageRoute(builder: (context) => AppSearchPage()),
                 );
               },
             ),

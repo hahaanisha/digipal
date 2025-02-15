@@ -1,7 +1,6 @@
 import 'package:digipal/screens/BotPage.dart';
 import 'package:digipal/screens/LinkPage.dart';
 import 'package:digipal/screens/feedback.dart';
-import 'package:digipal/screens/practicePage.dart';
 import 'package:flutter/material.dart';
 
 import 'Practice.dart';

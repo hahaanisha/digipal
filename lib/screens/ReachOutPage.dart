@@ -7,7 +7,13 @@ class ReachOutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('ReachOut Page'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('🐣',style: TextStyle(fontSize: 55),),
+            Text('I am Under Construction',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+          ],
+        ),
       ),
     );
   }

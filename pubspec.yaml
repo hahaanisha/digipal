@@ -51,6 +51,9 @@ dependencies:
   easy_upi_payment: ^0.1.6
   permission_handler: ^11.3.1
   contacts_service: ^0.6.3
+  android_intent_plus: ^3.1.0
+  video_player: ^2.9.2
+
 
 
 dev_dependencies:
@@ -91,6 +94,7 @@ flutter:
     - assets/Wifistep3.png
     - assets/Wifistep4.png
     - assets/Wifistep5.png
+    - assets/VESHACKIT.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

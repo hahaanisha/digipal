@@ -81,7 +81,7 @@ class _LoginPagerState extends State<LoginPager> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Welcome Recruiter',
+                'Welcome Back!',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black),
               ),
               const SizedBox(height: 10),

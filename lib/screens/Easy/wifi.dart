@@ -1,22 +1,25 @@
+import 'dart:io'; // Import for platform detection
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:android_intent_plus/android_intent.dart';
+import 'package:android_intent_plus/flag.dart';
 
-class wifi extends StatefulWidget {
-  const wifi({Key? key}) : super(key: key);
+class Wifi extends StatefulWidget {
+  const Wifi({Key? key}) : super(key: key);
 
   @override
-  _wifiState createState() => _wifiState();
+  _WifiState createState() => _WifiState();
 }
 
-class _wifiState extends State<wifi> {
+class _WifiState extends State<Wifi> {
   final List<bool> _isOpen = List.generate(5, (index) => false);
 
   final List<String> steps = [
     "Open Settings App",
     "Tap on Network & Internet",
-    "Click on the wifi toggle ",
-    "Select your desired WIFI",
-    "Enter Password and press connect"
+    "Click on the WiFi toggle",
+    "Select your desired WiFi",
+    "Enter Password and press Connect"
   ];
 
   final List<String> stepImages = [
@@ -27,16 +30,40 @@ class _wifiState extends State<wifi> {
     "assets/Wifistep5.png"
   ];
 
-  /// Opens the contacts app (or dialer if direct opening is restricted)
-  void _launchContactsApp() async {
-    final Uri uri = Uri(scheme: "tel", path: ""); // Opens dialer/contacts
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+  /// Opens the WiFi settings on Android & iOS
+  Future<void> _openWifiSettings() async {
+    if (Platform.isAndroid) {
+      try {
+        final intent = AndroidIntent(
+          action: 'android.settings.WIFI_SETTINGS',
+          flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
+        );
+        await intent.launch();
+      } catch (e) {
+        _showError("⚠️ Could not open WiFi settings on Android.");
+      }
+    } else if (Platform.isIOS) {
+      // Different iOS versions require different settings URLs
+      final Uri url = Uri.parse("App-Prefs:root=WIFI");
+      final Uri altUrl = Uri.parse("App-Prefs:root=Settings");
+
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else if (await canLaunchUrl(altUrl)) {
+        await launchUrl(altUrl);
+      } else {
+        _showError("⚠️ Could not open WiFi settings on iOS.");
+      }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Could not open contacts app")),
-      );
+      _showError("⚠️ This feature is not supported on your device.");
     }
+  }
+
+  /// Show an error message as a Snackbar
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
   }
 
   @override
@@ -59,13 +86,13 @@ class _wifiState extends State<wifi> {
         child: Column(
           children: [
             const Text(
-              "Lets Get you Connected to a WIFI",
+              "📡 Let's Get You Connected to WiFi",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const Text(
-              "Follow these simple steps to connect your phone to a secure network",
+              "Follow these simple steps to connect your phone to a WiFi network.",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.black54),
             ),
@@ -106,13 +133,13 @@ class _wifiState extends State<wifi> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _launchContactsApp,
+                onPressed: _openWifiSettings,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
                 child: const Text(
-                  "Try Now",
+                  "📶 Open WiFi Settings",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ),
