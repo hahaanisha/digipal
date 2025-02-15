@@ -40,7 +40,7 @@ class _BottomNavBarRState extends State<BottomNavBarR> {
       ChallengePage(),
       FormHomePage(UID: widget.companyUID,),
       // ReachOutPage(),
-      ReachOutPage(),
+      TestModel(UID: widget.companyUID,),
       FeedbackScreen(),
     ];
 
