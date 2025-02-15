@@ -94,80 +94,82 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Profile')),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
-            ),
-            SizedBox(height: 20),
-            Text('Email:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(email),
-            SizedBox(height: 10),
-            Text('Name:', style: TextStyle(fontWeight: FontWeight.bold)),
-            isEditing
-                ? TextField(controller: nameController)
-                : Text(name),
-            SizedBox(height: 10),
-            Text('Phone:', style: TextStyle(fontWeight: FontWeight.bold)),
-            isEditing
-                ? TextField(controller: phoneController, keyboardType: TextInputType.phone)
-                : Text(phone),
-            SizedBox(height: 10),
-            Text('Preferred Language:', style: TextStyle(fontWeight: FontWeight.bold)),
-            isEditing
-                ? DropdownButton<String>(
-              value: selectedLanguage,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedLanguage = newValue!;
-                });
-              },
-              items: indianLanguages.map<DropdownMenuItem<String>>((String language) {
-                return DropdownMenuItem<String>(
-                  value: language,
-                  child: Text(language),
-                );
-              }).toList(),
-            )
-                : Text(selectedLanguage),
-            SizedBox(height: 20),
-            Text('Badges:', style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            Wrap(
-              spacing: 10,
-              children: [
-                if (easyScore > 7) Image.asset('assets/easybadge.png', width: 50, height: 50),
-                if (mediumScore > 7) Image.asset('assets/mediumbadge.png', width: 50, height: 50),
-                if (hardScore > 7) Image.asset('assets/hardbadge.png', width: 50, height: 50),
-                if (finalScore > 7) Image.asset('assets/finalbadge.png', width: 50, height: 50),
-              ],
-            ),
-            SizedBox(height: 20),
-            isEditing
-                ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: _updateUserData,
-                  child: Text('Save'),
-                ),
-                ElevatedButton(
-                  onPressed: () => setState(() => isEditing = false),
-                  child: Text('Cancel'),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                ),
-              ],
-            )
-                : Center(
-              child: ElevatedButton(
-                onPressed: () => setState(() => isEditing = true),
-                child: Text('Edit Profile'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Text('Email:', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(email),
+              SizedBox(height: 10),
+              Text('Name:', style: TextStyle(fontWeight: FontWeight.bold)),
+              isEditing
+                  ? TextField(controller: nameController)
+                  : Text(name),
+              SizedBox(height: 10),
+              Text('Phone:', style: TextStyle(fontWeight: FontWeight.bold)),
+              isEditing
+                  ? TextField(controller: phoneController, keyboardType: TextInputType.phone)
+                  : Text(phone),
+              SizedBox(height: 10),
+              Text('Preferred Language:', style: TextStyle(fontWeight: FontWeight.bold)),
+              isEditing
+                  ? DropdownButton<String>(
+                value: selectedLanguage,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedLanguage = newValue!;
+                  });
+                },
+                items: indianLanguages.map<DropdownMenuItem<String>>((String language) {
+                  return DropdownMenuItem<String>(
+                    value: language,
+                    child: Text(language),
+                  );
+                }).toList(),
+              )
+                  : Text(selectedLanguage),
+              SizedBox(height: 20),
+              Text('Badges:', style: TextStyle(fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              Wrap(
+                spacing: 10,
+                children: [
+                  if (easyScore > 7) Image.asset('assets/easybadge.png', width: 50, height: 50),
+                  if (mediumScore > 7) Image.asset('assets/mediumbadge.png', width: 50, height: 50),
+                  if (hardScore > 7) Image.asset('assets/hardbadge.png', width: 50, height: 50),
+                  if (finalScore > 7) Image.asset('assets/finalbadge.png', width: 50, height: 50),
+                ],
+              ),
+              SizedBox(height: 20),
+              isEditing
+                  ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: _updateUserData,
+                    child: Text('Save'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => setState(() => isEditing = false),
+                    child: Text('Cancel'),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  ),
+                ],
+              )
+                  : Center(
+                child: ElevatedButton(
+                  onPressed: () => setState(() => isEditing = true),
+                  child: Text('Edit Profile'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
