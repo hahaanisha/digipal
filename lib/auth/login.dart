@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 import '../screens/BottomNavbar.dart';
 import 'signup.dart';
-
 
 class LoginPager extends StatefulWidget {
   const LoginPager({Key? key}) : super(key: key);
@@ -17,28 +17,55 @@ class _LoginPagerState extends State<LoginPager> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  late FlutterTts _flutterTts;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeTTS();
+  }
+
+  Future<void> _initializeTTS() async {
+    _flutterTts = FlutterTts();
+
+    await _flutterTts.awaitSpeakCompletion(true);
+    await _flutterTts.setLanguage("en-US");
+    await _flutterTts.setSpeechRate(0.5);
+    await _flutterTts.setVolume(1.0);
+    await _flutterTts.setPitch(1.0);
+  }
+
+  /// ✅ Speak after successful login
+  Future<void> _speakWelcome() async {
+    await _flutterTts.speak("Welcome to DIGIPAL");
+  }
+
+  /// ✅ Login Function
   Future<void> _login() async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
       );
 
       User? user = userCredential.user;
       if (user != null) {
-        String name = user.displayName ?? "User"; // Fetch display name or fallback to "User"
         String userUID = user.uid;
 
+        // 🎤 Speak Welcome Message After Login
+        _speakWelcome();
+
+        // Navigate to Home
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => BottomNavBarR(companyUID: userUID,),
+            builder: (context) => BottomNavBarR(companyUID: userUID),
           ),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed: $e')),
+        SnackBar(content: Text('Login failed: ${e.toString()}')),
       );
     }
   }
@@ -55,19 +82,12 @@ class _LoginPagerState extends State<LoginPager> {
             children: [
               const Text(
                 'Welcome Recruiter',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black),
               ),
               const SizedBox(height: 10),
               const Text(
                 'Sign in to access your account',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black45,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.black45),
               ),
               const SizedBox(height: 30),
               TextField(
@@ -104,22 +124,13 @@ class _LoginPagerState extends State<LoginPager> {
                 children: [
                   Row(
                     children: [
-                      Checkbox(
-                        value: false,
-                        onChanged: (value) {},
-                      ),
-                      const Text(
-                        'Remember me',
-                        style: TextStyle(color: Colors.black45),
-                      ),
+                      Checkbox(value: false, onChanged: (value) {}),
+                      const Text('Remember me', style: TextStyle(color: Colors.black45)),
                     ],
                   ),
                   TextButton(
                     onPressed: () {}, // Add password reset logic here
-                    child: const Text(
-                      'Forget password?',
-                      style: TextStyle(color: Colors.blue),
-                    ),
+                    child: const Text('Forget password?', style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
@@ -131,17 +142,11 @@ class _LoginPagerState extends State<LoginPager> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade900,
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                   ),
                   child: const Text(
                     'LOGIN',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -149,25 +154,15 @@ class _LoginPagerState extends State<LoginPager> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'New Member?',
-                    style: TextStyle(color: Colors.black54),
-                  ),
+                  const Text('New Member?', style: TextStyle(color: Colors.black54)),
                   TextButton(
                     onPressed: () {
-                      // Navigate to the registration page
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpPager(),
-                        ),
+                        MaterialPageRoute(builder: (context) => SignUpPager()),
                       );
-
                     },
-                    child: const Text(
-                      'Register now',
-                      style: TextStyle(color: Colors.blue),
-                    ),
+                    child: const Text('Register now', style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),

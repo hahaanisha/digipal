@@ -46,6 +46,7 @@ dependencies:
   webview_flutter: ^4.4.2
   webview_flutter_android: ^3.10.0
   mailer: ^6.4.1
+  flutter_tts: ^4.2.2
 
 
 
