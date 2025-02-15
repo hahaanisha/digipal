@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'PaymentsPage.dart';
+
 class HardLevelPage extends StatelessWidget {
   const HardLevelPage({Key? key}) : super(key: key);
 
@@ -110,21 +112,31 @@ class HardLevelPage extends StatelessWidget {
               const SizedBox(height: 20),
 
               _buildModuleCard(
-                title: "Module 1: Cybersecurity",
+                title: "Module 1: Forms",
                 description:
                 "Understand digital threats, secure your accounts, and protect personal information.",
                 imagePath: "assets/cybersecurity.png",
                 onTap: () {
-                  Navigator.pushNamed(context, '/cyberSecurity');
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => TransactionPage(),
+                  //   ),
+                  // );
                 },
               ),
               _buildModuleCard(
-                title: "Module 2: Cloud Storage",
+                title: "Module 2: Basic Payments",
                 description:
                 "Learn how to use Google Drive, Dropbox, and OneDrive for easy file access and backups.",
                 imagePath: "assets/cloud.png",
                 onTap: () {
-                  Navigator.pushNamed(context, '/cloudStorage');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransactionPage(),
+                    ),
+                  );
                 },
               ),
               _buildModuleCard(

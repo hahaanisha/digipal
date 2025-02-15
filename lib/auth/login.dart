@@ -29,7 +29,7 @@ class _LoginPagerState extends State<LoginPager> {
     _flutterTts = FlutterTts();
 
     await _flutterTts.awaitSpeakCompletion(true);
-    await _flutterTts.setLanguage("en-US");
+    await _flutterTts.setLanguage("hi-IN");
     await _flutterTts.setSpeechRate(0.5);
     await _flutterTts.setVolume(1.0);
     await _flutterTts.setPitch(1.0);
@@ -37,7 +37,7 @@ class _LoginPagerState extends State<LoginPager> {
 
   /// ✅ Speak after successful login
   Future<void> _speakWelcome() async {
-    await _flutterTts.speak("Welcome to DIGIPAL");
+    await _flutterTts.speak("डिजीपलमध्ये आपले स्वागत आहे");
   }
 
   /// ✅ Login Function
