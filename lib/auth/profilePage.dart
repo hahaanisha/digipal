@@ -142,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 if (easyScore > 7) Image.asset('assets/easybadge.png', width: 50, height: 50),
                 if (mediumScore > 7) Image.asset('assets/mediumbadge.png', width: 50, height: 50),
                 if (hardScore > 7) Image.asset('assets/hardbadge.png', width: 50, height: 50),
-                if (finalScore > 7) Image.asset('assets/black.png', width: 50, height: 50),
+                if (finalScore > 7) Image.asset('assets/finalbadge.png', width: 50, height: 50),
               ],
             ),
             SizedBox(height: 20),
