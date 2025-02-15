@@ -101,12 +101,28 @@ class _FormHomePageState extends State<FormHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Form Auto-Filler')),
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "DigiPal",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const Text(
+                "Form Auto-Filler",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
               TextField(
                 controller: urlController,
                 decoration: InputDecoration(labelText: 'Enter Form URL'),
