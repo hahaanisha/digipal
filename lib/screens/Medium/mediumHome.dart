@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'EmailPage.dart';
+
 class MediumLevelPage extends StatelessWidget {
   const MediumLevelPage({Key? key}) : super(key: key);
 
@@ -119,23 +121,28 @@ class MediumLevelPage extends StatelessWidget {
                 },
               ),
               _buildModuleCard(
-                title: "Module 2: Online Banking",
+                title: "Module 2: Emails and Communication",
                 description:
                 "Understand digital payments, secure transactions, and how to manage your money online.",
                 imagePath: "assets/banking.png",
                 onTap: () {
-                  Navigator.pushNamed(context, '/onlineBanking');
+                  Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EmailPage(),
+                  ),
+                );
                 },
               ),
-              _buildModuleCard(
-                title: "Module 3: Emails & Communication",
-                description:
-                "Master emails, organize your inbox, and learn to communicate professionally online.",
-                imagePath: "assets/email.png",
-                onTap: () {
-                  Navigator.pushNamed(context, '/emailCommunication');
-                },
-              ),
+              // _buildModuleCard(
+              //   title: "Module 3: Emails & Communication",
+              //   description:
+              //   "Master emails, organize your inbox, and learn to communicate professionally online.",
+              //   imagePath: "assets/email.png",
+              //   onTap: () {
+              //     Navigator.pushNamed(context, '/emailCommunication');
+              //   },
+              // ),
             ],
           ),
         ),

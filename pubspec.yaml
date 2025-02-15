@@ -45,6 +45,7 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   webview_flutter: ^4.4.2
   webview_flutter_android: ^3.10.0
+  mailer: ^6.4.1
 
 
 
