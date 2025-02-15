@@ -126,12 +126,12 @@ class MediumLevelPage extends StatelessWidget {
                 "Understand digital payments, secure transactions, and how to manage your money online.",
                 imagePath: "assets/banking.png",
                 onTap: () {
-                  Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => EmailPage(),
-                  ),
-                );
+                //   Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => EmailPage(),
+                //   ),
+                // );
                 },
               ),
               // _buildModuleCard(
