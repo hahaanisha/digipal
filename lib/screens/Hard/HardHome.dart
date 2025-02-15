@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'PaymentsPage.dart';
+import 'form.dart';
 
 class HardLevelPage extends StatelessWidget {
   const HardLevelPage({Key? key}) : super(key: key);
@@ -117,12 +118,12 @@ class HardLevelPage extends StatelessWidget {
                 "Understand digital threats, secure your accounts, and protect personal information.",
                 imagePath: "assets/form.png",
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => TransactionPage(),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => form(),
+                    ),
+                  );
                 },
               ),
               _buildModuleCard(
