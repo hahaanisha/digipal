@@ -41,10 +41,8 @@ In a digital-first world, underserved communities, older populations, and rural 
 - Speech Recognition with **speech_to_text**
 
 ### **Backend**
-- Firebase Firestore (NoSQL real-time database)
+- Firebase Realtime DB (NoSQL real-time database)
 - Firebase Authentication (for user management)
-- Cloud Storage for lesson media files
-- Llama 3 API (for guided learning and smart assistance)
 
 ---
 
@@ -68,7 +66,6 @@ In a digital-first world, underserved communities, older populations, and rural 
 ✅ **Dashboard** – Learning modules, practice exercises & progress tracking  
 ✅ **Step-by-Step Guide** – Users can input forms, and DigiPal guides them through filling them out  
 ✅ **Voice Assistant Integration** – Reads instructions aloud for accessibility  
-✅ **Offline Mode** – Download lessons for later access
 
 ---
 
@@ -97,15 +94,7 @@ users/
    userID1/
       - name: "Anisha Shankar"
       - email: "anisha@example.com"
-      - progress: { "Lesson1": "Completed", "Lesson2": "In Progress" }
-
-lessons/
-   lessonID1/
-      - title: "How to Send an Email"
-      - content: "Step-by-step guide to sending an email."
-      - language: "Hindi"
-      - media: "https://firebasestorage.com/lesson1.mp4"
-```
+      - progress: { "Easy Level": "10", "Medium Level": "8" }
 
 ---
 
@@ -116,10 +105,7 @@ lessons/
 flutter build apk
 flutter install
 ```
-#### **For iOS:**
-```sh
-flutter build ios
-```
+
 
 ### 2️⃣ **Backend (Firebase Setup)**
 #### **Step 1: Initialize Firebase**
