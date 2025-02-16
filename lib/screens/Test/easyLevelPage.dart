@@ -14,16 +14,16 @@ class _EasyPageState extends State<EasyPage> {
   int score = 0;
 
   final List<Map<String, dynamic>> questions = [
-    {"question": "What does CPU stand for?", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Process Unit"], "answer": "Central Processing Unit"},
-    {"question": "Which key is used to enter a new line in a text document?", "options": ["Shift", "Enter", "Backspace"], "answer": "Enter"},
-    {"question": "Which device is used to type on a computer?", "options": ["Mouse", "Keyboard", "Monitor"], "answer": "Keyboard"},
-    {"question": "What is the main function of an operating system?", "options": ["Manage hardware and software", "Run applications", "Connect to the internet"], "answer": "Manage hardware and software"},
-    {"question": "Which storage device is non-volatile?", "options": ["RAM", "Hard Drive", "Cache"], "answer": "Hard Drive"},
-    {"question": "Which programming language is used to build websites?", "options": ["Python", "HTML", "Java"], "answer": "HTML"},
-    {"question": "Which of these is an output device?", "options": ["Keyboard", "Printer", "Scanner"], "answer": "Printer"},
-    {"question": "What does URL stand for?", "options": ["Uniform Resource Locator", "Universal Remote Link", "User Referenced Link"], "answer": "Uniform Resource Locator"},
-    {"question": "Which key is used to delete a character in text?", "options": ["Shift", "Delete", "Tab"], "answer": "Delete"},
-    {"question": "What does HTTP stand for?", "options": ["HyperText Transfer Protocol", "HyperText Transmission Process", "Hyperlink Transfer Program"], "answer": "HyperText Transfer Protocol"},
+    {"question": "What does Wi-Fi stand for?", "options": ["Wireless Fidelity", "Wired Fidelity", "Wide Frequency"], "answer": "Wireless Fidelity"},
+    {"question": "Where can you adjust screen brightness on a smartphone?", "options": ["Settings", "Contacts", "Messages"], "answer": "Settings"},
+    {"question": "What is the purpose of Airplane Mode?", "options": ["Disable wireless connections", "Turn off the phone", "Speed up the device"], "answer": "Disable wireless connections"},
+    {"question": "Which app is commonly used for sending text messages?", "options": ["Messages", "Gallery", "Calculator"], "answer": "Messages"},
+    {"question": "How do you silence incoming calls?", "options": ["Press the volume down button", "Open Camera", "Uninstall the phone app"], "answer": "Press the volume down button"},
+    {"question": "Where can you find Wi-Fi settings?", "options": ["Settings -> Wi-Fi", "Clock app", "Gallery"], "answer": "Settings -> Wi-Fi"},
+    {"question": "What icon represents mobile network signal?", "options": ["Bars icon", "Music note", "Battery icon"], "answer": "Bars icon"},
+    {"question": "What do you need to make a phone call?", "options": ["SIM card", "Headphones", "Flashlight"], "answer": "SIM card"},
+    {"question": "Where do you change the phone’s wallpaper?", "options": ["Settings -> Display", "Calculator", "Messages"], "answer": "Settings -> Display"},
+    {"question": "What does the Bluetooth feature do?", "options": ["Connects wireless devices", "Turns on flashlight", "Takes screenshots"], "answer": "Connects wireless devices"},
   ];
 
   void checkAnswer(String selectedAnswer) {
@@ -52,7 +52,7 @@ class _EasyPageState extends State<EasyPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Quiz Completed!"),
+        title: const Text("Quiz Completed!", style: TextStyle(fontWeight: FontWeight.bold)),
         content: Text("Your score: $score/${questions.length}"),
         actions: [
           TextButton(
@@ -60,7 +60,7 @@ class _EasyPageState extends State<EasyPage> {
               Navigator.pop(context);
               Navigator.pop(context);
             },
-            child: const Text("OK"),
+            child: const Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -72,28 +72,47 @@ class _EasyPageState extends State<EasyPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        title: const Text("Easy Level Quiz",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-        backgroundColor: Colors.green,
+        title: const Text("Smartphone Basics Quiz", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        backgroundColor: Colors.purple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Question ${currentQuestionIndex + 1}/${questions.length}",
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.purple.shade100,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                "Question ${currentQuestionIndex + 1}/${questions.length}",
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ),
             const SizedBox(height: 20),
             Text(
               questions[currentQuestionIndex]["question"],
-              style: const TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             ...questions[currentQuestionIndex]["options"].map<Widget>((option) {
-              return ElevatedButton(
-                onPressed: () => checkAnswer(option),
-                child: Text(option),
+              return Container(
+                margin: EdgeInsets.symmetric(vertical: 5),
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  ),
+                  onPressed: () => checkAnswer(option),
+                  child: Text(
+                    option,
+                    style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
               );
             }).toList(),
           ],

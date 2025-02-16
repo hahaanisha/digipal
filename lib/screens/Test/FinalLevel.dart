@@ -14,16 +14,16 @@ class _FinalLevelState extends State<FinalLevel> {
   int score = 0;
 
   final List<Map<String, dynamic>> questions = [
-    {"question": "What does CPU stand for?", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Process Unit"], "answer": "Central Processing Unit"},
-    {"question": "Which key is used to enter a new line in a text document?", "options": ["Shift", "Enter", "Backspace"], "answer": "Enter"},
-    {"question": "Which device is used to type on a computer?", "options": ["Mouse", "Keyboard", "Monitor"], "answer": "Keyboard"},
-    {"question": "What is the main function of an operating system?", "options": ["Manage hardware and software", "Run applications", "Connect to the internet"], "answer": "Manage hardware and software"},
-    {"question": "Which storage device is non-volatile?", "options": ["RAM", "Hard Drive", "Cache"], "answer": "Hard Drive"},
-    {"question": "Which programming language is used to build websites?", "options": ["Python", "HTML", "Java"], "answer": "HTML"},
-    {"question": "Which of these is an output device?", "options": ["Keyboard", "Printer", "Scanner"], "answer": "Printer"},
-    {"question": "What does URL stand for?", "options": ["Uniform Resource Locator", "Universal Remote Link", "User Referenced Link"], "answer": "Uniform Resource Locator"},
-    {"question": "Which key is used to delete a character in text?", "options": ["Shift", "Delete", "Tab"], "answer": "Delete"},
-    {"question": "What does HTTP stand for?", "options": ["HyperText Transfer Protocol", "HyperText Transmission Process", "Hyperlink Transfer Program"], "answer": "HyperText Transfer Protocol"},
+    {"question": "What is phishing?", "options": ["A cyber-attack using fake emails", "A type of malware", "A secure encryption method"], "answer": "A cyber-attack using fake emails"},
+    {"question": "Which protocol encrypts website traffic?", "options": ["HTTP", "HTTPS", "FTP"], "answer": "HTTPS"},
+    {"question": "What does AI stand for?", "options": ["Automated Intelligence", "Artificial Intelligence", "Advanced Internet"], "answer": "Artificial Intelligence"},
+    {"question": "What is a VPN used for?", "options": ["Secure browsing", "Faster downloads", "Boosting Wi-Fi signals"], "answer": "Secure browsing"},
+    {"question": "What is two-factor authentication (2FA)?", "options": ["A single password login", "Verifying identity with two methods", "An encryption technique"], "answer": "Verifying identity with two methods"},
+    {"question": "Which programming language is commonly used in AI?", "options": ["Python", "HTML", "CSS"], "answer": "Python"},
+    {"question": "What does a firewall do?", "options": ["Blocks unauthorized access", "Speeds up internet", "Stores passwords"], "answer": "Blocks unauthorized access"},
+    {"question": "Which of these is a strong password?", "options": ["123456", "P@ssw0rd!123", "password"], "answer": "P@ssw0rd!123"},
+    {"question": "What is ransomware?", "options": ["A virus that encrypts files for ransom", "A free security software", "A type of firewall"], "answer": "A virus that encrypts files for ransom"},
+    {"question": "What does IoT stand for?", "options": ["Internet of Things", "Intelligent Online Tech", "Integrated Operating Technology"], "answer": "Internet of Things"},
   ];
 
   void checkAnswer(String selectedAnswer) {
@@ -56,7 +56,7 @@ class _FinalLevelState extends State<FinalLevel> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Quiz Completed!"),
+        title: const Text("Quiz Completed!", style: TextStyle(fontWeight: FontWeight.bold)),
         content: Text("Your score: $score/${questions.length}"),
         actions: [
           TextButton(
@@ -76,28 +76,44 @@ class _FinalLevelState extends State<FinalLevel> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        title: const Text("Final Quiz",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-        backgroundColor: Colors.green,
+        title: const Text("Final Level Quiz", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        backgroundColor: Colors.purple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Question ${currentQuestionIndex + 1}/${questions.length}",
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Card(
+              elevation: 4,
+              color: Colors.purple[50],
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  "Question ${currentQuestionIndex + 1}/${questions.length}",
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
             const SizedBox(height: 20),
             Text(
               questions[currentQuestionIndex]["question"],
-              style: const TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             ...questions[currentQuestionIndex]["options"].map<Widget>((option) {
-              return ElevatedButton(
-                onPressed: () => checkAnswer(option),
-                child: Text(option),
+              return Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  onPressed: () => checkAnswer(option),
+                  child: Text(option, style: const TextStyle(fontSize: 18, color: Colors.white)),
+                ),
               );
             }).toList(),
           ],

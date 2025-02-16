@@ -5,6 +5,7 @@ import 'CallHome.dart';
 import 'call.dart';
 import 'installApp.dart';
 import 'saveContact.dart';
+import 'securesetting.dart';
 import 'sendMessage.dart';
 
 class smartphoneHome extends StatelessWidget {
@@ -122,7 +123,7 @@ class smartphoneHome extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SaveContactPage()),
+                  MaterialPageRoute(builder: (context) => SafetyGuidePage()),
                 );
               },
             ),
