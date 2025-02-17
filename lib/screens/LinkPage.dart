@@ -18,7 +18,7 @@ class _FormHomePageState extends State<FormHomePage> {
   List<Map<String, dynamic>> formFields = [];
   int currentStep = 0;
   Map<String, String> userInputs = {};
-  static const apiKey = 'AIzaSyA7LxDBz3bEPP1JkFjfbzdry5UIpu81H-A';
+  static const apiKey = '';
   String userLanguage = "English";
 
   @override
