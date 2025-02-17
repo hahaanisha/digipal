@@ -26,7 +26,7 @@ class _TestModelState extends State<TestModel> {
   String _spokenText = "";
   String _modelResponse = "";
 
-  final String apiKey = 'AIzaSyBC1V1ERSRe7sXp-dDtysFu8EukQ055P-4';
+  final String apiKey = '';
   final String endpoint =
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
   String userLanguage = "English";
