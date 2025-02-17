@@ -25,9 +25,6 @@ In a digital-first world, underserved communities, older populations, and rural 
 ## 🎨 Figma Prototype
 🔗 _[[DigiPal Figma File](https://www.figma.com/design/seG5njl0PI11THUhGabYzj/digipal?node-id=0-1&t=CBeiTjwPawYKx8c9-1)]_
 
-## 📽️ Presentation File
-🔗 _[https://docs.google.com/presentation/d/11QIHzXpT1NMfA8OJEVEh-4nymqWGnjQLqU_cU6QvYCM/edit?usp=sharing]_
-
 ## 📱 APK Download
 🔗 _[https://drive.google.com/file/d/1uCSCVVuPlAvxq2CAyM1t-evnvNhZ-gQF/view?usp=sharing]_
 
