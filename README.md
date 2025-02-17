@@ -17,8 +17,8 @@ In a digital-first world, underserved communities, older populations, and rural 
 
 ---
 
-## 🖥️ Screenshots
-🖼️ _[Add app screenshots here]_
+## 🖥️ Flow
+![DigiPal Flow](flow1.png)
 
 ---
 
