@@ -1,6 +1,6 @@
 # DigiPal - Your Friend in the Digital World 🫱🏻‍🫲🏻
 
-📱 **Digital Literacy App - SW-02**
+📱 **Digital Literacy App**
 
 ## 📌 Problem Statement
 In a digital-first world, underserved communities, older populations, and rural areas struggle with digital literacy, limiting access to education, employment, healthcare, and social inclusion. Our app bridges this gap by providing an **interactive, step-by-step learning experience** in regional languages. It ensures accessibility for users with minimal digital knowledge through voice guidance, simple navigation, and interactive practice modules.
@@ -131,13 +131,6 @@ firebase deploy --only functions
 
 ---
 
-## 👥 **Contributors**
-**Made by:**
-- _[[Tejas Gadge](https://github.com/tejasgadge2504)]_
-- _[[Anisha Shankar](https://github.com/hahaanisha)]_
-- _[[Ganesh Shelar](https://github.com/ganeshelar0010)]_
-
----
 
 ## 📬 **Feedback & Support**
 💌 Have suggestions? Found a bug? Let us know! _[Provide contact details if needed]_
